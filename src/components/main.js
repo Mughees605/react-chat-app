@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { AppBar } from 'material-ui';
-import Login from "./login.js"
-
-
-
 
 class Main extends Component {
     render() {
@@ -11,10 +7,10 @@ class Main extends Component {
 
             <div>
                 <AppBar
-                    title="Title"
+                    title="React-Chat-App"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                 />
-                <Login />
+                {this.props.children}
             </div>
 
         );
