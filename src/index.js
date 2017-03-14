@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {MuiThemeProvider} from 'material-ui';
 import './index.css';
 
 // importing components//
@@ -8,8 +8,8 @@ import Main from "./components/main"
 //
 
 ReactDOM.render(
-  <div>
+  <MuiThemeProvider>
   <Main />
-  </div>,
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
