@@ -9,14 +9,21 @@ import Login from "./components/login.js"
 import Chatboard from "./components/chat.js"
 import firebase from "./config/index.js"
 //
-var { Route, Router, IndexRoute, hashHistory } = require('react-router');
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 var store = require("./store/index").storeConfig();
 var action = require("./actions/index.js")
 
-firebase.auth().onAuthStateChanged((user)=>{
-  if(user){
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
     console.log(user)
     store.dispatch(action.Login(user.uid))
+    hashHistory.push("/chat")
+  }
+  else {
+    store.dispatch(action.Logout())
+    hashHistory.push("/")
   }
 })
 
@@ -26,7 +33,7 @@ ReactDOM.render(
     <MuiThemeProvider>
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
-          <Route path="/login" component={Login} />
+          <IndexRoute  component={Login} />
           <Route path="/chat" component={Chatboard} />
         </Route>
       </Router>

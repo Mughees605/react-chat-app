@@ -11,4 +11,15 @@ export class firebaseService {
             })
         })
     }
+
+    static githubLogout = ()=>{
+        return new Promise((res,rej)=>{
+            firebase.auth().signOut().then((user)=>{
+                 console.log("signOut succecful");
+                 res(user)
+            }).catch((err)=>{
+                rej(err)
+            })
+        })
+    }
 }

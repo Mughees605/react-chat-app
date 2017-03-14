@@ -5,6 +5,8 @@ export var loginReducer = (state = {},action)=>{
         return {
             uid:action.uid
         }
+        case "LOGOUT":
+        return {}
         default:
         return state
     }
