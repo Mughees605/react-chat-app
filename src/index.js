@@ -6,8 +6,8 @@ import './index.css';
 // importing components//
 import Main from "./components/main";
 import Login from "./components/login.js"
-import Chatboard from "./components/chat.js"
-import firebase from "./config/index.js"
+import Message from "./containers/message.js"
+import firebase from "./config/index.js";
 //
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -34,8 +34,8 @@ ReactDOM.render(
     <MuiThemeProvider>
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
-          <IndexRoute  component={Login} />
-          <Route path="/chat" component={Chatboard} />
+          <IndexRoute component={Login} />
+          <Route path="/chat" component={Message} />
         </Route>
       </Router>
     </MuiThemeProvider>

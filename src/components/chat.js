@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { RaisedButton, FontIcon, TextField } from "material-ui"
+import { RaisedButton, FontIcon, TextField, ListItem, List, Avatar } from "material-ui"
 
 var action = require("../actions/index.js")
 
@@ -11,10 +11,11 @@ class Chatboard extends Component {
     }
     handleMessage() {
         var message = this.refs.message.getValue();
-        var {dispatch} = this.props;
+        var { dispatch } = this.props;
         dispatch(action.handleMessage(message))
     }
     render() {
+        var { getData } = this.props
         return (
             <div>
                 <RaisedButton
@@ -25,7 +26,6 @@ class Chatboard extends Component {
                     style={{ margin: "12px 0px" }}
                     icon={<FontIcon className=" s-icon-custom-github" />}
                 />
-
                 <TextField
                     hintText="type your message here"
                     ref="message"
@@ -34,8 +34,23 @@ class Chatboard extends Component {
                     label="submit"
                     onClick={this.handleMessage.bind(this)}
                     secondary={true}
-
                 />
+                <List>
+                    {getData.map(function (val, i) {
+                        return (
+
+                            <ListItem
+                            key = {i}
+                                disabled={true}
+                                leftAvatar={
+                                    <Avatar src={val.img} />
+                                }
+                            >
+                            {val.message}
+                            </ListItem>
+                        )
+                    })}
+                </List>
             </div>
         )
     }
