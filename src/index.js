@@ -18,7 +18,7 @@ var action = require("./actions/index.js")
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log(user)
-    store.dispatch(action.Login(user.uid))
+    store.dispatch(action.Login(user))
     hashHistory.push("/chat")
   }
   else {
@@ -26,6 +26,7 @@ firebase.auth().onAuthStateChanged((user) => {
     hashHistory.push("/")
   }
 })
+store.dispatch(action.fetchMessage());
 
 
 ReactDOM.render(

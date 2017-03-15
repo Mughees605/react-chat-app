@@ -6,7 +6,7 @@ var logger = require("redux-logger")
 
 export var storeConfig = function () {
     var reducer = Redux.combineReducers({
-        loginReducer
+        userData:loginReducer
     });
 
     const middleWare = applyMiddleware(thunk, logger())
